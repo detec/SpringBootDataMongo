@@ -1,11 +1,13 @@
 package sample.domain;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 /**
  * @author Andrii Duplyk
  *
  */
+@Document(collection = "customers")
 public class Customer {
 
 	@Id

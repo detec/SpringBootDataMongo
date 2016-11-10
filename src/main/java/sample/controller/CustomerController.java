@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import sample.dao.CustomerRepository;
 import sample.domain.Customer;
@@ -24,7 +23,6 @@ import sample.domain.Customer;
  * @author Andrii Duplyk
  *
  */
-@EnableWebMvc
 @RestController
 @RequestMapping(value = "customers")
 public class CustomerController {

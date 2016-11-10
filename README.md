@@ -9,7 +9,7 @@ This is a template project to build with Maven for DAO layer and REST service wi
 - Java 8.
 
 DAO layer is built with interfaces that extend Repository interface in Spring Data, no actual implementation is needed. Service layer is omitted. There is a sample Customer
-class that utilizes '/customer/' endpoint.
+class that utilizes '/customer/' endpoint. To view automatic Swagger.io documentation use address /swagger-ui.html.
 
 Sample rest controller supports exception handling and JSON pretty printing. Change src/main/resources/application.properties to specify your MongoDB database name or remove
 relevant setting to use default one.

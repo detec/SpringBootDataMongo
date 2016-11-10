@@ -83,6 +83,7 @@ public class CustomerController {
 
 	@ApiOperation(value = "Customer retrieval", notes = "Customer retrieval by last name, returns list of customers")
 	@GetMapping("/filter/{lastName}")
+	@ApiResponses(value = { @ApiResponse(code = 200, message = "Success", response = List.class) })
 	ResponseEntity<List<Customer>> findByLastName(
 			@ApiParam(value = "Customer last name", required = true) @PathVariable String lastName) {
 

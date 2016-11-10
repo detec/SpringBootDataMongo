@@ -14,6 +14,7 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
  *
  */
 @Component("customObjectMapper")
+// @Primary
 public class CustomObjectMapper extends ObjectMapper {
 
 	private static final long serialVersionUID = -3672344428949816140L;

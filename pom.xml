@@ -42,17 +42,23 @@
 
         
         
-	<!-- Springfox swagger API documentation. -->
-	<dependency>
-    	<groupId>io.springfox</groupId>
-    	<artifactId>springfox-swagger2</artifactId>
-    	<version>${springfox.swagger.version}</version>
-	</dependency>
-	<dependency>
-	    <groupId>io.springfox</groupId>
-	    <artifactId>springfox-swagger-ui</artifactId>
-	    <version>${springfox.swagger.version}</version>
-	</dependency>
+		<!-- Springfox swagger API documentation. -->
+		<dependency>
+	    	<groupId>io.springfox</groupId>
+	    	<artifactId>springfox-swagger2</artifactId>
+	    	<version>${springfox.swagger.version}</version>
+		</dependency>
+		<dependency>
+		    <groupId>io.springfox</groupId>
+		    <artifactId>springfox-swagger-ui</artifactId>
+		    <version>${springfox.swagger.version}</version>
+		</dependency>
+		<dependency>
+		    <groupId>io.springfox</groupId>
+		    <artifactId>springfox-staticdocs</artifactId>
+		    <version>${springfox.swagger.version}</version>
+		    <scope>test</scope>
+		</dependency>	
 	        
     </dependencies>
 

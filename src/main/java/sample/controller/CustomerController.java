@@ -70,7 +70,7 @@ public class CustomerController {
 	@ApiOperation(value = "Customer removal", notes = "Removes an existing customer by id from database")
 	@DeleteMapping("{id}")
 	@ApiResponses(value = { @ApiResponse(code = 204, message = "Removed") })
-	ResponseEntity<Customer> deleteCustomer(@PathVariable String id) {
+	ResponseEntity<Customer> deleteCustomer(@ApiParam(value = "Customer id", required = true) @PathVariable String id) {
 		Customer entity = repository.findById(id);
 		if (entity == null) {
 			throw new IllegalArgumentException("Customer not found with id: " + id);
@@ -81,8 +81,10 @@ public class CustomerController {
 
 	}
 
+	@ApiOperation(value = "Customer retrieval", notes = "Customer retrieval by last name, returns list of customers")
 	@GetMapping("/filter/{lastName}")
-	ResponseEntity<List<Customer>> findByLastName(@PathVariable String lastName) {
+	ResponseEntity<List<Customer>> findByLastName(
+			@ApiParam(value = "Customer last name", required = true) @PathVariable String lastName) {
 
 		List<Customer> customerList = repository.findByLastName(lastName);
 		return new ResponseEntity<>(customerList, HttpStatus.OK);

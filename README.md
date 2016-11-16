@@ -6,6 +6,7 @@ This is a template project to build with Maven for DAO layer and REST service wi
 - Jackson Databind 2.8 with JSR310 support;
 - sl4j/Logback;
 - MongoDB 3.2;
+- Springfox swagger 2.6;
 - Java 8.
 
 DAO layer is built with interfaces that extend Repository interface in Spring Data, no actual implementation is needed. Service layer is omitted. There is a sample Customer

@@ -1,6 +1,7 @@
 package sample.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -31,8 +32,12 @@ import sample.domain.Customer;
 @RequestMapping(value = "customers")
 public class CustomerController {
 
-	@Autowired
-	private CustomerRepository repository;
+    private final CustomerRepository repository;
+
+    @Autowired
+    public CustomerController(CustomerRepository repository) {
+        this.repository = repository;
+    }
 
 	@ApiOperation(value = "Customer save", notes = "Saves a new customer")
 	@PostMapping
@@ -60,25 +65,18 @@ public class CustomerController {
 	ResponseEntity<Customer> getCustomerById(
 			@ApiParam(value = "Customer id", required = true) @PathVariable String id) {
 		Customer newEntity = repository.findById(id);
-		if (newEntity != null) {
-			return new ResponseEntity<>(newEntity, HttpStatus.OK);
-		}
-
-		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        return (newEntity != null) ? new ResponseEntity<>(newEntity, HttpStatus.OK)
+                : new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}
 
 	@ApiOperation(value = "Customer removal", notes = "Removes an existing customer by id from database")
 	@DeleteMapping("{id}")
 	@ApiResponses(value = { @ApiResponse(code = 204, message = "Removed") })
 	ResponseEntity<Customer> deleteCustomer(@ApiParam(value = "Customer id", required = true) @PathVariable String id) {
-		Customer entity = repository.findById(id);
-		if (entity == null) {
-			throw new IllegalArgumentException("Customer not found with id: " + id);
-		}
-
+        Customer entity = Optional.ofNullable(repository.findById(id))
+                .orElseThrow(() -> new IllegalArgumentException("Customer not found with id: " + id));
 		repository.delete(entity);
 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-
 	}
 
 	@ApiOperation(value = "Customer retrieval", notes = "Customer retrieval by last name, returns list of customers")

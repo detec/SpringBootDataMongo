@@ -63,3 +63,6 @@ $RECYCLE.BIN/
 *.lnk
 
 /target/
+.gradle/
+build/
+gradle/

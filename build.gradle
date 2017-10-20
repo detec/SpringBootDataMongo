@@ -36,12 +36,14 @@ targetCompatibility = 1.8
 
 ext {
     springfoxSwaggerVersion = '2.7.0'
+    junitJupiter = '5.0.1'
 }
 
 repositories {
     mavenCentral()
     mavenLocal()
-    jcenter() 
+    jcenter()
+    maven { url 'https://jitpack.io' }
 }
 
 dependencies {
@@ -58,6 +60,10 @@ dependencies {
 	
 	testCompile("io.springfox:springfox-staticdocs:2.6.1")
 	testCompile("org.springframework.boot:spring-boot-starter-test")
+	testCompile("com.github.sbrannen:spring-test-junit5:1.0.0")
+	testCompile("org.junit.jupiter:junit-jupiter-api:${junitJupiter}")
+	testCompile("org.junit.jupiter:junit-jupiter-engine:${junitJupiter}")
+	testCompile("org.junit.platform:junit-platform-runner:1.0.1")
 }
 
 mainClassName = 'sample.Application'  

@@ -5,21 +5,18 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.platform.runner.JUnitPlatform;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootContextLoader;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.web.WebAppConfiguration;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
 import io.github.robwin.markup.builder.MarkupLanguage;
-import sample.config.ApplicationConfig;
-import sample.config.SwaggerConfig;
-import sample.config.WebAppConfig;
 import springfox.documentation.staticdocs.Swagger2MarkupResultHandler;
 
 /**
@@ -28,10 +25,9 @@ import springfox.documentation.staticdocs.Swagger2MarkupResultHandler;
  * @author Andrii Duplyk
  *
  */
-@WebAppConfiguration
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = { ApplicationConfig.class, SwaggerConfig.class,
-		WebAppConfig.class }, loader = SpringBootContextLoader.class)
+@RunWith(JUnitPlatform.class)
+@ExtendWith(SpringExtension.class)
+@SpringBootTest
 public class Swagger2MarkupTest {
 
 	@Autowired

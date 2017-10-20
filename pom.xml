@@ -10,12 +10,13 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.5.7.RELEASE</version>
+        <version>1.5.8.RELEASE</version>
     </parent>
 
     <properties>
         <java.version>1.8</java.version>
         <springfox.swagger.version>2.7.0</springfox.swagger.version>
+        <junit.jupiter>5.0.1</junit.jupiter>
     </properties>
 
     <dependencies>
@@ -63,7 +64,36 @@
 		    <version>2.6.1</version>
 		    <scope>test</scope>
 		</dependency>	
-	        
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>${junit.jupiter}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>${junit.jupiter}</version>
+            <scope>test</scope>
+        </dependency> 
+        <dependency>
+            <groupId>org.junit.platform</groupId>
+            <artifactId>junit-platform-runner</artifactId>
+            <version>1.0.1</version>
+            <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>junit</groupId>
+                    <artifactId>junit</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>com.github.sbrannen</groupId>
+            <artifactId>spring-test-junit5</artifactId>
+            <version>1.0.0</version>
+            <scope>test</scope>
+        </dependency>	        
     </dependencies>
 
     <build>
@@ -77,6 +107,7 @@
      <plugin>
      	<groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-jar-plugin</artifactId>
+        <version>3.0.2</version>
         	<configuration>
             	<archive>
                 	<manifest>
@@ -101,6 +132,7 @@
                 <appendAssemblyId>false</appendAssemblyId>
             </configuration>
      </plugin>
+ 
 </plugins>             
     </build>
     
@@ -110,6 +142,10 @@
             <name>Spring Releases</name>
             <url>https://repo.spring.io/libs-release</url>
         </repository>
+        <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
+        </repository>        
     </repositories>
     <pluginRepositories>
         <pluginRepository>
